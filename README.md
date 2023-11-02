@@ -1,5 +1,50 @@
-# register-login-test
-A Website to test the registration, login and logout of users.
+# Eine Testwebseite mit Minispielen
+
+Eine Testwebseite für die Registrierung und Anmeldung von Benutzern, welche auch Minispiele enthält.
+
+Muss noch überarbeitet werden!
+
+---
+
+Um ein PHP + Laravel-Projekt von GitHub auf einem anderen Rechner zum Laufen zu bringen, braucht man
+
+neben [XAMPP](https://www.apachefriends.org/download.html) oder [Docker](https://www.docker.com/get-started/):
+
+1. (PHP) [Composer](https://getcomposer.org/) runterladen.
+    1. Wenn es direkt geht, dann zu Schritt 6 springen.
+
+2. Über den [Xdebug Wizard](https://xdebug.org/wizard) (online) mithilfe von "phpinfo" oder "php -i" herausfinden, welche Xdebug.dll man downloaden muss.
+3. In den empfohlenen Ordner verschieben und zu "xdebug.dll" umbenennen.
+4. In der "php.ini" das "xdebug.start_with_request" von "yes" auf "trigger" umstellen.
+5. Dann kann erst Composer installiert werden (zumindest in meinem Fall).
+
+6. Beim Laravel-Projekt die Datei ".env.example" als ".env" kopieren.
+7. Im Terminal "composer install" im Projket-Ordner ausführen.
+8. Falls ein Fehler auftritt, den "Application Key" generieren lassen.
+9. Bei Bedarf "Virtual Hosts" hinzufügen.
+10. Unter "database\web_minigames.sql" die Datenbank-Struktur wiederherstellen.
+    1. Oder mit "php artisan migrate" erstellen und die fehlenden Spalten ergänzen.
+    2. Falls etwas nur positive Zahlen haben soll (n >= 0), dann UNSIGNED nehmen.
+    3. Ansonsten ist SIGNED erforderlich.
+    4. Bei Werten von 0 - 255 am besten UNSIGNED TINYINT nehmen.
+11. Bei Fragen oder Problemen einfach Issue erstellen oder anderweitig Bescheid geben
+    1. Oder selber beheben, wenn dies möglich ist.
+
+Fertig. :-)
+
+---
+Es gibt aber noch einige Fehler, wie zum Beispiel, dass beim Registrieren eines Benutzers folgender Fehler bei mir kommt:
+
+```
+TypeError
+PHP 8.2.4
+Laravel 9.41.0
+
+Illuminate\Log\LogManager::info(): Argument #2 ($context) must be of type array, App\Models\User given, called in C:\xampp\htdocs\web-minigames\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php on line 338
+```
+
+Ich weiß nicht, woher das kommt, weil es auf einem anderen Rechner wunderbar ging. Aber zumindest wird der User angelegt und nach erneutem Abschicken wird man zurückgeleitet und bekommt den Hinweis, dass er schon "angelegt" wurde. Wenn ich mehr Lust und Zeit dazu habe, untersuche ich das mal genauer.
+
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
